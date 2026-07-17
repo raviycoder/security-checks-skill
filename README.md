@@ -1,4 +1,4 @@
-# security-checks
+# security-checks-skill
 
 A comprehensive security audit skill for AI coding agents. Performs 5 progressive security checks on any codebase:
 
@@ -13,13 +13,13 @@ A comprehensive security audit skill for AI coding agents. Performs 5 progressiv
 ### Via skills.sh (Vercel)
 
 ```bash
-npx skills add <your-username>/security-checks
+npx skills add raviycoder/security-checks-skill
 ```
 
 ### Via skill.sh (zero-dep)
 
 ```bash
-curl -sL skil.sh | sh -s -- <your-username>/security-checks
+curl -sL skil.sh | sh -s -- raviycoder/security-checks-skill
 ```
 
 ### Manual
@@ -28,10 +28,10 @@ Clone this repo to your agent's skill directory:
 
 ```bash
 # OpenCode
-git clone https://github.com/<your-username>/security-checks.git .opencode/skill/security-checks
+git clone https://github.com/raviycoder/security-checks-skill.git .opencode/skill/security-checks
 
 # Claude Code
-git clone https://github.com/<your-username>/security-checks.git .claude/skills/security-checks
+git clone https://github.com/raviycoder/security-checks-skill.git .claude/skills/security-checks
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ Once installed, the agent will automatically use this skill when you ask for:
 ## Structure
 
 ```
-security-checks/
+security-checks-skill/
 ├── SKILL.md          # Main skill instructions (required)
 ├── README.md         # This file
 └── .gitignore        # Git ignore rules
@@ -57,3 +57,9 @@ security-checks/
 This skill follows the [Agent Skills specification](https://agentskills.io) with:
 - `name`: security-checks
 - `description`: Comprehensive security audit covering secrets, PII, production readiness, auth/payments, and attack surface review
+
+## Repository
+
+GitHub: https://github.com/raviycoder/security-checks-skill
+
+Skills.sh: https://skills.sh/raviycoder/security-checks-skill
