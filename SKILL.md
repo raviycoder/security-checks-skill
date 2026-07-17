@@ -20,7 +20,7 @@ Find and fix hardcoded secrets, API keys, tokens, and credentials.
 5. Check `console.log`, error handlers, and API responses for accidental secret leaks.
 6. If secrets were previously hardcoded, warn that git history still contains them and recommend rotation.
 
-**Report:** Table of every secret found, its location, and what it was moved to.
+**Report:** Summary table with: secret TYPE (e.g., "AWS_KEY", "DB_PASSWORD", "JWT_SECRET"), file path, line number, and the env var name it was moved to. **NEVER include the actual secret value in any output.** Redact all values as `[REDACTED]`.
 
 ---
 
@@ -36,7 +36,7 @@ Track how user data (emails, phones, passwords, PII) moves through the app.
 6. Verify API responses only return what the client needs — no password hashes, no internal IDs, no other users' data.
 7. Check if a data deletion mechanism exists for users.
 
-**Report:** Data flow map — what is collected, where stored, where sent externally, and what was fixed.
+**Report:** Data flow map — what is collected, where stored, where sent externally, and what was fixed. **Redact all PII values as `[REDACTED]` in reports.**
 
 ---
 
@@ -92,7 +92,7 @@ Think like a hacker. Test these specific attack paths:
 6. **Internal exposure** — check if any of these are publicly accessible: DB admin panel, env vars via error messages, `.env` file via direct URL, `.git` directory, internal Swagger/OpenAPI docs, health check endpoints leaking system info.
 7. **Business logic** — for payments: can I pay negative amounts? Stack discounts? Restart free trials? Refer myself? These are logic flaws, not code bugs.
 
-**Report:** For each vulnerability: attacker action, damage potential, and immediate fix. Prioritize data theft and unauthorized access first, then abuse and logic flaws.
+**Report:** For each vulnerability: attacker action, damage potential, and immediate fix. Prioritize data theft and unauthorized access first, then abuse and logic flaws. **Redact any sensitive data (tokens, PII, credentials) as `[REDACTED]` in reports.**
 
 ---
 
@@ -109,3 +109,5 @@ After all 5 checks, produce a single summary:
 | 5. Attacker Review | | | |
 
 List any items that require manual review or cannot be auto-fixed.
+
+**Output rule:** Never include actual secret values, PII, tokens, or credentials in any report. All sensitive data must be redacted as `[REDACTED]`.
